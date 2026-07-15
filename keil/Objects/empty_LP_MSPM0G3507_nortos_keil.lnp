@@ -16,6 +16,7 @@
 ".\objects\oled.o"
 ".\objects\ir_module.o"
 ".\objects\control.o"
+".\objects\route.o"
 --library_type=microlib --strict --scatter "./mspm0g3507.sct"
 C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\lib\keil\m0p\mspm0g1x0x_g3x0x\driverlib.a --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

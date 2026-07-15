@@ -15,6 +15,7 @@
 
 #include "bsp_systick.h"
 #include "bsp_siic.h"
+#include "board.h"
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 #include "dmpKey.h"
@@ -2875,7 +2876,8 @@ lp_int_restore:
 }
 void myget_ms(unsigned long *time)
 {
-
+	/* 修改原因：DMP 驱动需要真实时间戳；空实现会破坏采样时序和超时机制。 */
+	*time = Board_GetMillis();
 }
 /**
  *  @}

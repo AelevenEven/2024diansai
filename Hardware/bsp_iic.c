@@ -6,7 +6,8 @@
 
 void mspm0_get_clock_ms(unsigned long* time)
 {
-	*time = 0;
+	/* 修改原因：原函数一直返回 0 会使 I2C 超时判断失效，改用统一的系统毫秒计数。 */
+	*time = Board_GetMillis();
 }
 
 static int mspm0_i2c_disable(void)
@@ -79,7 +80,8 @@ int mspm0_i2c_write(unsigned char slave_addr,
 
     do {
         unsigned fillcnt;
-        fillcnt = DL_I2C_fillControllerTXFIFO(I2C_0_INST, ptr, cnt);
+        /* DriverLib's API lacks a const qualifier, but it only reads TX data. */
+        fillcnt = DL_I2C_fillControllerTXFIFO(I2C_0_INST, (uint8_t *)ptr, cnt);
         cnt -= fillcnt;
         ptr += fillcnt;
 

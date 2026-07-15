@@ -201,6 +201,8 @@ TIMER1.peripheral.$assign = "TIMG0";
 
 UART1.$name                    = "UART_0";
 UART1.profile                  = "CONFIG_PROFILE_1";
+// 修改原因：原生成代码开启了 UART 内部回环，导致串口调试数据可能自发自收；实际使用外部 TX/RX。
+UART1.enableInternalLoopback   = false;
 UART1.peripheral.$assign       = "UART0";
 UART1.peripheral.rxPin.$assign = "PA11";
 UART1.peripheral.txPin.$assign = "PA10";

@@ -1,5 +1,5 @@
 ./objects/mpu6050.o: ..\Hardware\MPU6050.c ..\Hardware\MPU6050.h \
-  ..\..\empty\ti_msp_dl_config.h \
+  ..\Hardware\ti_msp_dl_config.h ..\Hardware\..\ti_msp_dl_config.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\msp.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\DeviceFamily.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\m0p\mspm0g350x.h \

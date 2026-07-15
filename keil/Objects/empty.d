@@ -71,9 +71,10 @@
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\dl_wwdt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_interrupt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_systick.h \
-  ..\Hardware\bsp_printf.h ..\..\empty\ti_msp_dl_config.h \
-  ..\Hardware\bsp_siic.h ..\Hardware\MPU6050.h ..\Hardware\inv_mpu.h \
+  ..\Hardware\bsp_printf.h ..\Hardware\ti_msp_dl_config.h \
+  ..\Hardware\..\ti_msp_dl_config.h ..\Hardware\bsp_siic.h \
+  ..\Hardware\MPU6050.h ..\Hardware\inv_mpu.h \
   ..\Hardware\inv_mpu_dmp_motion_driver.h ..\Hardware\dmpKey.h \
   ..\Hardware\dmpmap.h ..\Hardware\board.h ..\Hardware\led.h \
   ..\Hardware\key.h ..\Hardware\motor.h ..\Hardware\encoder.h \
-  ..\Hardware\control.h ..\Hardware\oled.h ..\Hardware\IR_Module.h
+  ..\Hardware\control.h ..\Hardware\route.h ..\Hardware\oled.h

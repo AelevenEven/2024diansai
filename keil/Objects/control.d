@@ -1,5 +1,6 @@
 ./objects/control.o: ..\Hardware\control.c ..\Hardware\control.h \
-  ..\Hardware\board.h ..\..\empty\ti_msp_dl_config.h \
+  ..\Hardware\board.h ..\Hardware\ti_msp_dl_config.h \
+  ..\Hardware\..\ti_msp_dl_config.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\msp.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\DeviceFamily.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\m0p\mspm0g350x.h \

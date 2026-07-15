@@ -7,7 +7,7 @@
 #include "dmpKey.h"
 #include "dmpmap.h"
 
-//imu变量
+//imu鍙橀噺
 typedef struct{
     float x;
     float y;
@@ -22,9 +22,11 @@ typedef struct{
     float yaw;
 }Imu_t;
 
-//全局变量
+//鍏ㄥ眬鍙橀噺
 extern Imu_t mpu6050;
 extern Imu_t RegOri_mpu6050;
+/* 修改原因：GPIO 中断只通知“数据已到”，主循环再读取 DMP，避免 ISR 内阻塞 I2C。 */
+extern volatile uint8_t mpu6050_data_ready;
 
 #define devAddr  0x68
 
@@ -381,15 +383,15 @@ extern	short gyro[3], accel[3];
 extern int16_t Gx_offset,Gy_offset,Gz_offset;
 extern float Acc1G_Values;
 extern float Roll,Pitch,Yaw; 
-//供外部调用的API
-void MPU6050_initialize(void); //初始化
-uint8_t MPU6050_testConnection(void); //检测MPU6050是否存在
-//读取ADC值
+//渚涘閮ㄨ皟鐢ㄧ殑API
+void MPU6050_initialize(void); //鍒濆鍖?
+uint8_t MPU6050_testConnection(void); //妫€娴婱PU6050鏄惁瀛樺湪
+//璇诲彇ADC鍊?
 void MPU6050_getMotion6(int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx, int16_t* gy, int16_t* gz);
 void MPU6050_getlastMotion6(int16_t* ax, int16_t* ay, 
 		int16_t* az, int16_t* gx, int16_t* gy, int16_t* gz);
-uint8_t MPU6050_getDeviceID(void); //读取MPU6050的ID
-void MPU6050_InitGyro_Offset(void);//初始化陀螺仪偏置
+uint8_t MPU6050_getDeviceID(void); //璇诲彇MPU6050鐨処D
+void MPU6050_InitGyro_Offset(void);//鍒濆鍖栭檧铻轰华鍋忕疆
 void DMP_Init(void);
 void Read_DMP(void);
 int Read_Temperature(void);

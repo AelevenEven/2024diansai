@@ -1,5 +1,6 @@
 ./objects/inv_mpu.o: ..\Hardware\inv_mpu.c ..\Hardware\bsp_systick.h \
-  ..\Hardware\bsp_siic.h ..\..\empty\ti_msp_dl_config.h \
+  ..\Hardware\bsp_siic.h ..\Hardware\ti_msp_dl_config.h \
+  ..\Hardware\..\ti_msp_dl_config.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\msp.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\DeviceFamily.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\m0p\mspm0g350x.h \
@@ -72,5 +73,7 @@
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\dl_wwdt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_interrupt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_systick.h \
+  ..\Hardware\board.h ..\Hardware\led.h ..\Hardware\key.h \
+  ..\Hardware\motor.h ..\Hardware\encoder.h ..\Hardware\control.h \
   ..\Hardware\inv_mpu.h ..\Hardware\inv_mpu_dmp_motion_driver.h \
   ..\Hardware\dmpKey.h ..\Hardware\dmpmap.h

@@ -1,4 +1,5 @@
-./objects/encoder.o: ..\Hardware\encoder.c ..\Hardware\encoder.h \
+./objects/route.o: ..\Hardware\route.c ..\Hardware\route.h \
+  ..\Hardware\control.h ..\Hardware\board.h \
   ..\Hardware\ti_msp_dl_config.h ..\Hardware\..\ti_msp_dl_config.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\msp\msp.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\devices\DeviceFamily.h \
@@ -72,7 +73,7 @@
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\dl_wwdt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_interrupt.h \
   C:\ti\mspm0_sdk_2_01_00_03\source\ti\driverlib\m0p\dl_systick.h \
-  ..\Hardware\board.h ..\Hardware\led.h ..\Hardware\key.h \
-  ..\Hardware\motor.h ..\Hardware\control.h ..\Hardware\MPU6050.h \
+  ..\Hardware\led.h ..\Hardware\key.h ..\Hardware\motor.h \
+  ..\Hardware\encoder.h ..\Hardware\IR_Module.h ..\Hardware\MPU6050.h \
   ..\Hardware\inv_mpu.h ..\Hardware\inv_mpu_dmp_motion_driver.h \
   ..\Hardware\dmpKey.h ..\Hardware\dmpmap.h

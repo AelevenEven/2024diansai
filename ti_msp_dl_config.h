@@ -164,49 +164,6 @@ extern "C" {
 /* Defines for key: GPIOA.18 with pinCMx 40 on package pin 11 */
 #define KEY_key_PIN                                             (DL_GPIO_PIN_18)
 #define KEY_key_IOMUX                                            (IOMUX_PINCM40)
-/* Port definition for Pin Group ENCODERA */
-#define ENCODERA_PORT                                                    (GPIOA)
-
-/* Defines for E1A: GPIOA.25 with pinCMx 55 on package pin 26 */
-#define ENCODERA_E1A_IIDX                                   (DL_GPIO_IIDX_DIO25)
-#define ENCODERA_E1A_PIN                                        (DL_GPIO_PIN_25)
-#define ENCODERA_E1A_IOMUX                                       (IOMUX_PINCM55)
-/* Defines for E1B: GPIOA.26 with pinCMx 59 on package pin 30 */
-#define ENCODERA_E1B_IIDX                                   (DL_GPIO_IIDX_DIO26)
-#define ENCODERA_E1B_PIN                                        (DL_GPIO_PIN_26)
-#define ENCODERA_E1B_IOMUX                                       (IOMUX_PINCM59)
-/* Port definition for Pin Group ENCODERB */
-#define ENCODERB_PORT                                                    (GPIOB)
-
-/* Defines for E2A: GPIOB.20 with pinCMx 48 on package pin 19 */
-// pins affected by this interrupt request:["E2A","E2B"]
-#define ENCODERB_INT_IRQN                                       (GPIOB_INT_IRQn)
-#define ENCODERB_INT_IIDX                       (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
-#define ENCODERB_E2A_IIDX                                   (DL_GPIO_IIDX_DIO20)
-#define ENCODERB_E2A_PIN                                        (DL_GPIO_PIN_20)
-#define ENCODERB_E2A_IOMUX                                       (IOMUX_PINCM48)
-/* Defines for E2B: GPIOB.24 with pinCMx 52 on package pin 23 */
-#define ENCODERB_E2B_IIDX                                   (DL_GPIO_IIDX_DIO24)
-#define ENCODERB_E2B_PIN                                        (DL_GPIO_PIN_24)
-#define ENCODERB_E2B_IOMUX                                       (IOMUX_PINCM52)
-/* Port definition for Pin Group AIN */
-#define AIN_PORT                                                         (GPIOA)
-
-/* Defines for AIN1: GPIOA.14 with pinCMx 36 on package pin 7 */
-#define AIN_AIN1_PIN                                            (DL_GPIO_PIN_14)
-#define AIN_AIN1_IOMUX                                           (IOMUX_PINCM36)
-/* Defines for AIN2: GPIOA.13 with pinCMx 35 on package pin 6 */
-#define AIN_AIN2_PIN                                            (DL_GPIO_PIN_13)
-#define AIN_AIN2_IOMUX                                           (IOMUX_PINCM35)
-/* Port definition for Pin Group BIN */
-#define BIN_PORT                                                         (GPIOA)
-
-/* Defines for BIN1: GPIOA.16 with pinCMx 38 on package pin 9 */
-#define BIN_BIN1_PIN                                            (DL_GPIO_PIN_16)
-#define BIN_BIN1_IOMUX                                           (IOMUX_PINCM38)
-/* Defines for BIN2: GPIOA.17 with pinCMx 39 on package pin 10 */
-#define BIN_BIN2_PIN                                            (DL_GPIO_PIN_17)
-#define BIN_BIN2_IOMUX                                           (IOMUX_PINCM39)
 /* Port definition for Pin Group OLED_RST */
 #define OLED_RST_PORT                                                    (GPIOB)
 
@@ -255,6 +212,49 @@ extern "C" {
 /* Defines for PIN_27: GPIOA.27 with pinCMx 60 on package pin 31 */
 #define IR_DH1_PIN_27_PIN                                       (DL_GPIO_PIN_27)
 #define IR_DH1_PIN_27_IOMUX                                      (IOMUX_PINCM60)
+/* Port definition for Pin Group ENCODERA */
+#define ENCODERA_PORT                                                    (GPIOA)
+
+/* Defines for E1A: GPIOA.25 with pinCMx 55 on package pin 26 */
+#define ENCODERA_E1A_IIDX                                   (DL_GPIO_IIDX_DIO25)
+#define ENCODERA_E1A_PIN                                        (DL_GPIO_PIN_25)
+#define ENCODERA_E1A_IOMUX                                       (IOMUX_PINCM55)
+/* Defines for E1B: GPIOA.26 with pinCMx 59 on package pin 30 */
+#define ENCODERA_E1B_IIDX                                   (DL_GPIO_IIDX_DIO26)
+#define ENCODERA_E1B_PIN                                        (DL_GPIO_PIN_26)
+#define ENCODERA_E1B_IOMUX                                       (IOMUX_PINCM59)
+/* Port definition for Pin Group ENCODERB */
+#define ENCODERB_PORT                                                    (GPIOB)
+
+/* Defines for E2A: GPIOB.20 with pinCMx 48 on package pin 19 */
+// pins affected by this interrupt request:["E2A","E2B"]
+#define ENCODERB_INT_IRQN                                       (GPIOB_INT_IRQn)
+#define ENCODERB_INT_IIDX                       (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
+#define ENCODERB_E2A_IIDX                                   (DL_GPIO_IIDX_DIO20)
+#define ENCODERB_E2A_PIN                                        (DL_GPIO_PIN_20)
+#define ENCODERB_E2A_IOMUX                                       (IOMUX_PINCM48)
+/* Defines for E2B: GPIOB.24 with pinCMx 52 on package pin 23 */
+#define ENCODERB_E2B_IIDX                                   (DL_GPIO_IIDX_DIO24)
+#define ENCODERB_E2B_PIN                                        (DL_GPIO_PIN_24)
+#define ENCODERB_E2B_IOMUX                                       (IOMUX_PINCM52)
+/* Port definition for Pin Group AIN */
+#define AIN_PORT                                                         (GPIOA)
+
+/* Defines for AIN1: GPIOA.14 with pinCMx 36 on package pin 7 */
+#define AIN_AIN1_PIN                                            (DL_GPIO_PIN_14)
+#define AIN_AIN1_IOMUX                                           (IOMUX_PINCM36)
+/* Defines for AIN2: GPIOA.13 with pinCMx 35 on package pin 6 */
+#define AIN_AIN2_PIN                                            (DL_GPIO_PIN_13)
+#define AIN_AIN2_IOMUX                                           (IOMUX_PINCM35)
+/* Port definition for Pin Group BIN */
+#define BIN_PORT                                                         (GPIOA)
+
+/* Defines for BIN1: GPIOA.16 with pinCMx 38 on package pin 9 */
+#define BIN_BIN1_PIN                                            (DL_GPIO_PIN_16)
+#define BIN_BIN1_IOMUX                                           (IOMUX_PINCM38)
+/* Defines for BIN2: GPIOA.17 with pinCMx 39 on package pin 10 */
+#define BIN_BIN2_PIN                                            (DL_GPIO_PIN_17)
+#define BIN_BIN2_IOMUX                                           (IOMUX_PINCM39)
 
 
 

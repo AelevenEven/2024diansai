@@ -136,22 +136,6 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalInput(KEY_key_IOMUX);
 
-    DL_GPIO_initDigitalInput(ENCODERA_E1A_IOMUX);
-
-    DL_GPIO_initDigitalInput(ENCODERA_E1B_IOMUX);
-
-    DL_GPIO_initDigitalInput(ENCODERB_E2A_IOMUX);
-
-    DL_GPIO_initDigitalInput(ENCODERB_E2B_IOMUX);
-
-    DL_GPIO_initDigitalOutput(AIN_AIN1_IOMUX);
-
-    DL_GPIO_initDigitalOutput(AIN_AIN2_IOMUX);
-
-    DL_GPIO_initDigitalOutput(BIN_BIN1_IOMUX);
-
-    DL_GPIO_initDigitalOutput(BIN_BIN2_IOMUX);
-
     DL_GPIO_initDigitalOutput(OLED_RST_PIN_RST_IOMUX);
 
     DL_GPIO_initDigitalOutput(OLED_DC_PIN_DC_IOMUX);
@@ -168,18 +152,34 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalInput(IR_DH1_PIN_27_IOMUX);
 
-    DL_GPIO_clearPins(GPIOA, AIN_AIN1_PIN |
+    DL_GPIO_initDigitalInput(ENCODERA_E1A_IOMUX);
+
+    DL_GPIO_initDigitalInput(ENCODERA_E1B_IOMUX);
+
+    DL_GPIO_initDigitalInput(ENCODERB_E2A_IOMUX);
+
+    DL_GPIO_initDigitalInput(ENCODERB_E2B_IOMUX);
+
+    DL_GPIO_initDigitalOutput(AIN_AIN1_IOMUX);
+
+    DL_GPIO_initDigitalOutput(AIN_AIN2_IOMUX);
+
+    DL_GPIO_initDigitalOutput(BIN_BIN1_IOMUX);
+
+    DL_GPIO_initDigitalOutput(BIN_BIN2_IOMUX);
+
+    DL_GPIO_clearPins(GPIOA, OLED_SCL_PIN_SCL_PIN |
+		OLED_SDA_PIN_SDA_PIN |
+		AIN_AIN1_PIN |
 		AIN_AIN2_PIN |
 		BIN_BIN1_PIN |
-		BIN_BIN2_PIN |
-		OLED_SCL_PIN_SCL_PIN |
-		OLED_SDA_PIN_SDA_PIN);
-    DL_GPIO_enableOutput(GPIOA, AIN_AIN1_PIN |
+		BIN_BIN2_PIN);
+    DL_GPIO_enableOutput(GPIOA, OLED_SCL_PIN_SCL_PIN |
+		OLED_SDA_PIN_SDA_PIN |
+		AIN_AIN1_PIN |
 		AIN_AIN2_PIN |
 		BIN_BIN1_PIN |
-		BIN_BIN2_PIN |
-		OLED_SCL_PIN_SCL_PIN |
-		OLED_SDA_PIN_SDA_PIN);
+		BIN_BIN2_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIOA, DL_GPIO_PIN_7_EDGE_FALL);
     DL_GPIO_setUpperPinsPolarity(GPIOA, DL_GPIO_PIN_25_EDGE_RISE |
 		DL_GPIO_PIN_26_EDGE_RISE);
@@ -393,8 +393,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
     DL_UART_Main_setRXFIFOThreshold(UART_0_INST, DL_UART_RX_FIFO_LEVEL_ONE_ENTRY);
     DL_UART_Main_setTXFIFOThreshold(UART_0_INST, DL_UART_TX_FIFO_LEVEL_1_2_EMPTY);
 
-    DL_UART_Main_enableLoopbackMode(UART_0_INST);
 
+    /* 修改原因：关闭 SysConfig 误生成的 UART 内部回环，UART0 现在用于真实串口调试输出。 */
     DL_UART_Main_enable(UART_0_INST);
 }
 
