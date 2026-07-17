@@ -31,12 +31,11 @@ extern int Sensor_Left,Sensor_Middle,Sensor_Right,Sensor;
 #define Wheelspacing 0.1610f		//主动轮轴距(单位:m)
 #define PI 3.1415926
 /*
- * 修改原因：TIMER_0 的实际周期是 10 ms，所以 CONTROL_FREQUENCY 必须为 100 Hz，
- * 否则由脉冲换算出的速度会放大一倍。
+
  *
  * ENCODER_A_SIGN / ENCODER_B_SIGN 是左右编码器方向修正系数：
  * 小车向前推时，对应轮的累计距离应增加；若某一路反而减少，就把该路的符号翻转。
- * 这只修正“测量方向”，不要用它代替电机接线或 Set_PWM() 的方向修正。
+
  */
  /* 编码器方向参数 */
 #define ENCODER_A_SIGN  1.0f
@@ -64,7 +63,7 @@ extern float Voltage_Count,Voltage_All,Voltage;
 extern float Velocity_KP,Velocity_KI;	
 extern int Run_Mode;//小车运行模式
 extern volatile int Flag_Stop;
-/* 修改原因：累计左右轮里程，供无标线路段按距离结束，并允许每段路线重新清零。 */
+/* 累计左右轮里程，供无标线路段按距离结束，并允许每段路线重新清零。 */
 extern volatile float EncoderA_Distance;
 extern volatile float EncoderB_Distance;
 void TIM6_Init(void); 

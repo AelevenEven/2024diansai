@@ -2,7 +2,7 @@
 
 //任意串口打印
 char Ux_TxBuff[256];
-void any_printf(UART_Regs *uart,char *format,...)
+void any_printf(UART_Regs *uart,char *format,...)//可打印多个串口
 {	
 	uint8_t i=0;      
 	va_list listdata;                                

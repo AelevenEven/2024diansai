@@ -7,15 +7,6 @@
 版本：5.7
 修改时间：2021-04-29
 
-
-Brand: WHEELTEC
-Website: wheeltec.net
-Taobao shop: shop114407458.taobao.com
-Aliexpress: https://minibalance.aliexpress.com/store/4455017
-Version: 5.7
-Update：2021-04-29
-
-All rights reserved
 ***********************************************/
 #include "control.h"
 
@@ -34,7 +25,6 @@ volatile float EncoderB_Distance;
 void TIMER_0_INST_IRQHandler(void)
 {
 	/*
-	 * 修改原因：SysConfig 给 TIMER_0 分配的是 TIMG0，应使用 DL_TimerG 接口；
 	 * 每 10 ms 原子地取走编码器增量，然后完成按键、速度换算和双轮 PI 控制。
 	 */
 	if (DL_TimerG_getPendingInterrupt(TIMER_0_INST) == DL_TIMER_IIDX_ZERO) {
@@ -68,7 +58,7 @@ Output  : none
 **************************************************************************/	 	
 void Get_Velocity_From_Encoder(int Encoder1,int Encoder2)
 {
-	/* 修改原因：将“每控制周期脉冲数”统一换算为 m/s，并同时积分成左右轮里程。 */
+	/* 将“每控制周期脉冲数”统一换算为 m/s，并同时积分成左右轮里程。 */
 	const float meters_per_count = Perimeter /
 		(EncoderMultiples * ENCODER_RESOLUTION * MOTOR_GEAR_RATIO);
 
@@ -204,7 +194,7 @@ void Key(void)
 	}		//单击控制小车的启停
 	else if(tmp==2)
 	{
-		/* 修改原因：仅在停车时允许双击切换路线，防止行驶中途突然更改状态机。 */
+		/* 仅在停车时允许双击切换路线，防止行驶中途突然更改状态机。 */
 		if (Flag_Stop) {
 			Run_Mode = (Run_Mode + 1) % 4;
 		}

@@ -4,8 +4,7 @@
 volatile uint32_t tick_ms;
 
 /*
- * 修改原因：原工程没有可靠的毫秒时基，MPU6050/DMP 的 get_ms() 得不到真实时间，
- * delay_ms() 也只能靠空循环估算。这里将 SysTick 配置成 1 ms 中断，统一提供系统时间。
+ * 这里将 SysTick 配置成 1 ms 中断，统一提供系统时间。
  */
 void SysTick_Init(void)//开启每1ms的系统计时
 {
@@ -33,7 +32,7 @@ uint32_t Systick_getTick(void)
 //ms阻塞延迟
 void delay_ms(uint32_t ms)
 {
-	/* 修改原因：使用毫秒计数等待，避免 CPU 主频变化后原来的空循环延时严重不准。 */
+	/* 使用毫秒计数等待，避免 CPU 主频变化后原来的空循环延时严重不准。 */
 	uint32_t start = Board_GetMillis();
 	while ((uint32_t)(Board_GetMillis() - start) < ms) {
 		__WFI();
@@ -43,7 +42,7 @@ void delay_ms(uint32_t ms)
 
 void delay_us(uint32_t us)
 {
-	/* 修改原因：按 CPU 实际频率换算周期，使微秒延时不再依赖固定魔数。 */
+	/* 按 CPU 实际频率换算周期，使微秒延时不再依赖固定魔数。 */
 	if (us != 0U) {
 		delay_cycles(us * (CPUCLK_FREQ / 1000000U));
 	}

@@ -6,7 +6,6 @@
 
 void mspm0_get_clock_ms(unsigned long* time)
 {
-	/* 修改原因：原函数一直返回 0 会使 I2C 超时判断失效，改用统一的系统毫秒计数。 */
 	*time = Board_GetMillis();
 }
 

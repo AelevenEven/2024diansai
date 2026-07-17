@@ -424,8 +424,7 @@ void Read_DMP(void)
         Pitch = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; // 璁＄畻鍑轰刊浠拌
         Yaw = atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * 57.3;	 //璁＄畻鍑哄亸鑸
         /*
-         * 修改原因：统一在 Read_DMP() 内更新公开的 mpu6050 结构体，避免主函数重复搬运；
-         * 同时修复原代码把 accel.x 重复写入 x/y/z 三个轴的问题。
+         * 统一在 Read_DMP() 内更新公开的 mpu6050 结构体，避免主函数重复搬运；        
          */
         mpu6050.pitch = Roll;
         mpu6050.roll = Pitch;

@@ -48,12 +48,11 @@ typedef enum
 	Mec_Car = 0, 
 	Omni_Car, 
 	Akm_Car, 
-	Diff_Car, 
+	Diff_Car, //差速轮
 	FourWheel_Car, 
 	Tank_Car
 } CarMode;
 
-/* 修改原因：Flag_Stop 会在定时器中断和主循环之间共享，必须声明为 volatile。 */
 extern volatile int Flag_Stop;
 //Systick最大计数值,24位
 #define SysTickMAX_COUNT 0xFFFFFF
@@ -66,7 +65,6 @@ extern volatile int Flag_Stop;
 #define SysTick_US(x)  ((SysTickFre/1000000U)*(uint32_t)(x))
 
 uint32_t Systick_getTick(void);
-/* 修改原因：为 DMP、软件延时和周期打印提供统一的 1 ms 时间接口。 */
 uint32_t Board_GetMillis(void);
 void SysTick_Init(void);
 void delay_ms(uint32_t ms);

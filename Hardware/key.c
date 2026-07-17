@@ -5,12 +5,12 @@ uint8_t keyValue(void)
     return ( DL_GPIO_readPins(KEY_PORT,KEY_key_PIN) & KEY_key_PIN ) > 0 ? 0:1;
 }
 
-UserKeyState_t key_scan(uint16_t freq)
+UserKeyState_t key_scan(uint16_t freq)//freq表示每秒调用次数
 {
-    static uint16_t time_core;//走时核心
-    static uint16_t long_press_time;//长按识别
-    static uint8_t press_flag=0;//按键按下标记
-    static uint8_t check_once=0;//是否已经识别1次标记
+    static uint16_t time_core;//松开后等待第二次按下的时间。
+    static uint16_t long_press_time;//按键持续按下计数
+    static uint8_t press_flag=0;//已经检测到第一次按下
+    static uint8_t check_once=0;//已经输出一次按键事件，防止同一次动作重复返回。
 	
     float Count_time = (((float)(1.0f/(float)freq))*1000.0f);//算出计1需要多少个毫秒
 

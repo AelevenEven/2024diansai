@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\empty_LP_MSPM0G3507_nortos_keil.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\empty_LP_MSPM0G3507_nortos_keil.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Wed Jul 15 22:33:00 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Jul 17 15:39:55 2026
 <BR><P>
-<H3>Maximum Stack Usage =         92 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        100 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-TIMG0_IRQHandler &rArr; key_scan &rArr; __aeabi_ui2f &rArr; _float_epilogue
+main &rArr; SYSCFG_DL_init &rArr; SYSCFG_DL_PWM_0_init &rArr; DL_TimerA_initPWMMode &rArr; DL_Timer_initPWMMode
 <P>
 <H3>
 Mutually Recursive functions
@@ -211,7 +211,6 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
-<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMG0_IRQHandler
 </UL>
 
@@ -276,6 +275,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMG0_IRQHandler
+</UL>
+
+<P><STRONG><a name="[58]"></a>__aeabi_f2d</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, f2d.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[67]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, uidiv_div0.o(.text), UNUSED)
@@ -371,10 +374,6 @@ Global Symbols
 
 <P><STRONG><a name="[6c]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 
-<P><STRONG><a name="[58]"></a>Board_GetMillis</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, board.o(.text.Board_GetMillis))
-<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
 <P><STRONG><a name="[4f]"></a>DL_Common_delayCycles</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dl_common.o(.text.DL_Common_delayCycles))
 <BR><BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSCFG_DL_initPower
 </UL>
@@ -428,8 +427,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[42]"></a>DL_Timer_setCaptureCompareValue</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, dl_timer.o(.text.DL_Timer_setCaptureCompareValue))
-<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_PWM
-<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSCFG_DL_PWM_0_init
+<BR><BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSCFG_DL_PWM_0_init
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_PWM
 </UL>
 
 <P><STRONG><a name="[3f]"></a>DL_Timer_setClockConfig</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, dl_timer.o(.text.DL_Timer_setClockConfig))
@@ -545,7 +544,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DL_Timer_setCaptureCompareValue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMG0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMG0_IRQHandler
 </UL>
 
 <P><STRONG><a name="[5]"></a>SysTick_Handler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, board.o(.text.SysTick_Handler))
@@ -560,14 +560,14 @@ Global Symbols
 <P><STRONG><a name="[13]"></a>TIMG0_IRQHandler</STRONG> (Thumb, 480 bytes, Stack size 40 bytes, control.o(.text.TIMG0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = TIMG0_IRQHandler &rArr; key_scan &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_PWM
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
+<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_scan
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_PWM
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mspm0g350x_uvision.o(RESET)
@@ -582,20 +582,20 @@ Global Symbols
 <P><STRONG><a name="[51]"></a>key_scan</STRONG> (Thumb, 220 bytes, Stack size 32 bytes, key.o(.text.key_scan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = key_scan &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMG0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 152 bytes, Stack size 8 bytes, empty.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = main &rArr; SYSCFG_DL_init &rArr; SYSCFG_DL_PWM_0_init &rArr; DL_TimerA_initPWMMode &rArr; DL_Timer_initPWMMode
+<P><STRONG><a name="[1e]"></a>main</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, empty.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; SYSCFG_DL_init &rArr; SYSCFG_DL_PWM_0_init &rArr; DL_TimerA_initPWMMode &rArr; DL_Timer_initPWMMode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Board_GetMillis
+<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_PWM
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSCFG_DL_init
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf

@@ -7,24 +7,14 @@
 #include "route.h"
 #include "oled.h"
 
-/*
- * 临时 PID 调试参数：一次只调一台电机，串口每行固定输出三列：
- * 目标速度(mm/s),实际速度(mm/s),PWM输出
- */
-#define PID_DEBUG_MOTOR_A          0
-#define PID_DEBUG_MOTOR_B          1
-#define PID_DEBUG_MOTOR            PID_DEBUG_MOTOR_A
-#define PID_DEBUG_TARGET_MPS       0.200f
-#define PID_DEBUG_PRINT_PERIOD_MS  20U
-
-static uint32_t last_report_ms;
-
 int main(void)
 {
+    uint8_t last_stop = 1U;
+
     SYSCFG_DL_init();
     SysTick_Init();
-    /* PID 调试期间关闭 OLED、MPU6050/DMP 和路线初始化，避免占用处理时间。 */
 //    OLED_Init();
+
 //    User_sIICDev.init();
 //    MPU6050_initialize();
 //    DMP_Init();
@@ -38,44 +28,35 @@ int main(void)
     NVIC_EnableIRQ(TIMER_0_INST_INT_IRQN);
 
     while (1) {
-        /*
-         * PID 调试时不调用 Read_DMP()、Route_Start()、Route_Update()、IR_Module_Read()。
-         * 单击按键后 Flag_Stop 变为 0，速度环开始让选中的电机跟随固定目标速度。
-         */
-        /* 以下是完整循迹/航向功能的原调用位置，现仅为调速度环而注释保留： */
-//      Read_DMP();
-//      Route_Select(ROUTE_AB);
-//      Route_Start(mpu6050.yaw);
-//      Route_Update(mpu6050.yaw);
-//      IR_Module_Read();
-
-        if (Flag_Stop == 0) {
-#if PID_DEBUG_MOTOR == PID_DEBUG_MOTOR_A
-            MotorA.Target_Encoder = PID_DEBUG_TARGET_MPS;
-            MotorB.Target_Encoder = 0.0f;
-#else
-            MotorA.Target_Encoder = 0.0f;
-            MotorB.Target_Encoder = PID_DEBUG_TARGET_MPS;
-#endif
-        } else {
-            MotorA.Target_Encoder = 0.0f;
-            MotorB.Target_Encoder = 0.0f;
-        }
+//        uint8_t imu_updated = 0U;
 
         /*
-         * CSV 数据，无表头，直接导入串口助手/Serial Studio：
-         * target_mm_s,actual_mm_s,output
-         * output 是 PID 解算、限幅后实际传给 Set_PWM() 的控制量。
+         * GPIO 中断只置位数据就绪标志，耗时的 I2C/FIFO 读取放在主循环。
+         * Route_Update 只在取得一帧新 yaw 后执行，避免把同一帧数据重复当成
+         * 多次“角度已稳定”判断。
          */
-        if ((uint32_t)(Board_GetMillis() - last_report_ms) >= PID_DEBUG_PRINT_PERIOD_MS) {
-            last_report_ms = Board_GetMillis();
-#if PID_DEBUG_MOTOR == PID_DEBUG_MOTOR_A
-            printf("%d,%d,%d\r\n", (int)(MotorA.Target_Encoder * 1000.0f),
-                   (int)(MotorA.Current_Encoder * 1000.0f), (int)(-MotorA.Motor_Pwm));
-#else
-            printf("%d,%d,%d\r\n", (int)(MotorB.Target_Encoder * 1000.0f),
-                   (int)(MotorB.Current_Encoder * 1000.0f), (int)MotorB.Motor_Pwm);
-#endif
-        }
+//        if (mpu6050_data_ready != 0U) {
+//            mpu6050_data_ready = 0U;
+//            Read_DMP();
+//            imu_updated = 1U;
+//        }
+
+        /*
+         * Route_Start 只能在“停止->启动”的边沿调用一次。
+         * 如果把它放在 while 中无条件调用，里程会被不断清零，路线无法前进。
+         */
+//        if ((last_stop != 0U) && (Flag_Stop == 0)) {
+//            Route_Select((RouteProgram)Run_Mode);
+//            Route_Start(mpu6050.yaw);
+//        }
+
+//        if ((Flag_Stop == 0) && (imu_updated != 0U)) {
+//            Route_Update(mpu6050.yaw);
+//        }
+
+//        last_stop = (Flag_Stop != 0) ? 1U : 0U;
+
+					Set_PWM(MotorA.Motor_Pwm,0);
+					printf("%f,%f,%f\r\n",MotorA.Target_Encoder,MotorA.Current_Encoder,MotorA.Motor_Pwm);
     }
 }
